@@ -1,0 +1,17 @@
+# Netlify configuration for the Good Hope Missionary Baptist Church website.
+# This is a static site (plain HTML/CSS/JS) with no build step.
+
+[build]
+  # Nothing to build. Publish the repository root as-is.
+  publish = "."
+  command = ""
+
+# Send the bare domain and the www subdomain to one canonical host.
+# (Netlify also handles this in the dashboard once a custom domain is added.)
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

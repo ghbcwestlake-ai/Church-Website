@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  OG IMAGE GENERATOR
+  Renders the social preview at exactly 1200 x 630 px.
+  This file is NOT linked from the site — it exists only to be screenshotted
+  to produce og-image.png.
+
+  HOW TO EXPORT TO og-image.png:
+    1. Open this file in Chrome.
+    2. Open DevTools (F12), toggle Device Toolbar (Ctrl+Shift+M).
+    3. Set custom dimensions to 1200 x 630.
+    4. In the DevTools "..." menu (top-right of DevTools), choose
+       "Run command" -> "Capture full size screenshot".
+    5. Save the resulting PNG into the project root as "og-image.png".
+
+  Alternate: any HTML-to-image tool (htmlcsstoimage.com, Puppeteer,
+  Playwright) at 1200 x 630 will produce the same result.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OG Image - Good Hope Missionary Baptist Church</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+    }
+
+    body {
+      background: #16315a;
+      background-image:
+        radial-gradient(ellipse at 50% 45%, rgba(201, 162, 74, 0.22), transparent 62%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      position: relative;
+      color: #FBF7EE;
+    }
+
+    /* Inner gold border frame for a heritage feel */
+    .frame {
+      position: absolute;
+      inset: 36px;
+      border: 1.5px solid rgba(201, 162, 74, 0.45);
+      border-radius: 10px;
+    }
+
+    /* Tiny gold corner ornaments (top-left + bottom-right) */
+    .corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid #C9A24A;
+    }
+    .corner.tl { top: 36px; left: 36px; border-right: none; border-bottom: none; }
+    .corner.tr { top: 36px; right: 36px; border-left: none;  border-bottom: none; }
+    .corner.bl { bottom: 36px; left: 36px; border-right: none; border-top: none; }
+    .corner.br { bottom: 36px; right: 36px; border-left: none;  border-top: none; }
+
+    /* Centered content stack */
+    .stack {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 80px;
+    }
+
+    .eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: #C9A24A;
+      margin-bottom: 38px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      display: block;
+      width: 44px;
+      height: 1px;
+      background: #C9A24A;
+      opacity: 0.5;
+    }
+
+    .logo {
+      width: 760px;
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+    }
+
+    .tagline {
+      margin-top: 32px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 36px;
+      color: #FBF7EE;
+      font-weight: 500;
+      letter-spacing: 0.005em;
+    }
+
+    /* Small decorative diamond divider beneath tagline */
+    .divider {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 1px;
+      background: #C9A24A;
+      opacity: 0.55;
+    }
+    .divider .dot {
+      width: 7px;
+      height: 7px;
+      background: #C9A24A;
+      transform: rotate(45deg);
+    }
+
+    .anniversary-tag {
+      margin-top: 28px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #C9A24A;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame"></div>
+  <span class="corner tl"></span>
+  <span class="corner tr"></span>
+  <span class="corner bl"></span>
+  <span class="corner br"></span>
+
+  <div class="stack">
+    <p class="eyebrow">Westlake, Louisiana &nbsp;&middot;&nbsp; Est. 1876</p>
+    <img class="logo" src="Logos/GHPC-primary-white-horizontal.png" alt="Good Hope Missionary Baptist Church" />
+    <p class="tagline">A Community of Faith Since 1876</p>
+    <div class="divider"><span class="dot"></span></div>
+    <p class="anniversary-tag">Celebrating 150 Years &nbsp;&middot;&nbsp; 1876 to 2026</p>
+  </div>
+</body>
+</html>

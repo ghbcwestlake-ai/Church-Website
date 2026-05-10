@@ -1,0 +1,12 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / tooling
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local files
+.claude/
