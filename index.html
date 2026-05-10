@@ -8,18 +8,22 @@
 
   <title>Good Hope Missionary Baptist Church | Westlake, LA</title>
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ghbcwestlake.netlify.app/" />
+
   <!-- ============================================
        SOCIAL / LINK PREVIEW (Open Graph + Twitter)
-       Update og:url and og:image to your real domain once deployed.
-       og-image.png is generated from og-image.html (1200x630).
+       TODO (church): generate og-image.png (1200x630) from og-image.html and put
+       it in the site root. Until that file exists, shared links won't show a
+       preview image. Update these URLs if you move to a custom domain.
        ============================================ -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="Good Hope Missionary Baptist Church" />
   <meta property="og:title" content="Good Hope Missionary Baptist Church | Westlake, LA" />
   <meta property="og:description" content="A community of faith since 1876, celebrating 150 years in 2026. Join us for Sunday worship, Bible study, and ministry in Westlake, Louisiana." />
-  <meta property="og:url" content="https://goodhopebaptist.org/" />
-  <meta property="og:image" content="https://goodhopebaptist.org/og-image.png" />
+  <meta property="og:url" content="https://ghbcwestlake.netlify.app/" />
+  <meta property="og:image" content="https://ghbcwestlake.netlify.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Good Hope Missionary Baptist Church. A Community of Faith Since 1876." />
@@ -27,8 +31,36 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Good Hope Missionary Baptist Church | Westlake, LA" />
   <meta name="twitter:description" content="A community of faith since 1876. Celebrating 150 years in 2026." />
-  <meta name="twitter:image" content="https://goodhopebaptist.org/og-image.png" />
+  <meta name="twitter:image" content="https://ghbcwestlake.netlify.app/og-image.png" />
   <meta name="twitter:image:alt" content="Good Hope Missionary Baptist Church. A Community of Faith Since 1876." />
+
+  <!-- Structured data — helps search engines show the church's name, address, and contact details -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "Good Hope Missionary Baptist Church",
+    "url": "https://ghbcwestlake.netlify.app/",
+    "logo": "https://ghbcwestlake.netlify.app/Logos/GHPC-full-color-horizontal.png",
+    "image": "https://ghbcwestlake.netlify.app/Logos/GHPC-full-color-horizontal.png",
+    "description": "Good Hope Missionary Baptist Church in Westlake, Louisiana — a community of faith since 1876, celebrating 150 years in 2026.",
+    "foundingDate": "1876",
+    "telephone": "+1-337-433-7403",
+    "email": "goodhopebap@outlook.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "821 Sampson St.",
+      "addressLocality": "Westlake",
+      "addressRegion": "LA",
+      "postalCode": "70669",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.facebook.com/GoodHopeBaptistChurch",
+      "https://www.youtube.com/@goodhopebaptistchurch3423"
+    ]
+  }
+  </script>
 
   <!-- Favicon: using the secondary full-color mark. Replace with a dedicated favicon.ico/SVG when available. -->
   <link rel="icon" type="image/png" href="Logos/GHPC-secondary-full-color-vertical.png" />
@@ -88,7 +120,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#beliefs">Beliefs</a></li>
           <li><a href="#ministries">Ministries</a></li>
-          <li><a href="#pastor">Our Pastor</a></li>
+          <li><a href="#connect">Connect</a></li>
           <li><a href="#visit">Visit</a></li>
           <li><a href="#visit" class="nav-cta">Plan Your Visit</a></li>
         </ul>
@@ -120,13 +152,17 @@
         </p>
 
         <p class="hero-tagline">A Community of Faith Since 1876</p>
-        <p class="hero-times">Sundays at 10:00 AM &middot; Wednesdays at 5:30 PM &middot; times tentative</p>
+        <p class="hero-times">Sundays at 10:00 AM &middot; Wednesdays at 5:30 PM &middot; <span class="hero-times-flag">times tentative</span></p>
 
         <div class="hero-actions">
           <a href="#visit" class="btn btn-primary">Plan Your Visit</a>
           <a href="#anniversary" class="btn btn-ghost">Our 150th Year</a>
         </div>
       </div>
+
+      <a href="#welcome" class="hero-scroll" aria-label="Scroll down to explore">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
     </section>
 
     <!-- ============================================
@@ -234,13 +270,34 @@
 
           <p class="brand-statement brand-statement--light">Debt Free. Mortgage Burned. 150 Years.</p>
         </div>
+
+        <ol class="timeline" aria-label="150th anniversary schedule">
+          <li class="timeline-item">
+            <span class="timeline-date">June 3, 2026</span>
+            <h3 class="timeline-title">Celebration Begins</h3>
+            <p class="timeline-detail">A month of worship, fellowship, and remembrance opens — 150 years in the making.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-date">Throughout June</span>
+            <h3 class="timeline-title">Worship &amp; Remembrance</h3>
+            <p class="timeline-detail">
+              Special services and gatherings all month long. Full schedule coming soon.
+              <!-- TODO (church): list the specific June dates &amp; events here once they're set. -->
+            </p>
+          </li>
+          <li class="timeline-item timeline-item--highlight">
+            <span class="timeline-date">Sunday, June 28, 2026 &middot; 2:00 PM</span>
+            <h3 class="timeline-title">150th Anniversary Worship Service</h3>
+            <p class="timeline-detail">The high point of the celebration — one church family giving thanks for a century and a half of God's faithfulness. All are welcome.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- ============================================
          5. SERVICE TIMES
          The single most-asked question on a church site. Make it scannable.
-         NOTE: times below are TENTATIVE pending confirmation from the church.
+         NOTE: Sunday/Wednesday times are TENTATIVE pending confirmation from the church.
          ============================================ -->
     <section class="section services" id="services">
       <div class="container">
@@ -252,6 +309,7 @@
             <p class="service-day">Sunday</p>
             <h3>Morning Worship</h3>
             <p class="service-time">10:00 AM</p>
+            <p class="service-flag">Time tentative</p>
             <p class="service-detail">Hymns, Scripture, and a sermon from God's Word in our main sanctuary.</p>
           </article>
 
@@ -259,6 +317,7 @@
             <p class="service-day">Wednesday</p>
             <h3>Night Fellowship</h3>
             <p class="service-time">5:30 PM</p>
+            <p class="service-flag">Time tentative</p>
             <p class="service-detail">Midweek prayer, Bible study, and fellowship for the whole church family.</p>
           </article>
 
@@ -271,9 +330,9 @@
         </div>
 
         <p class="services-note">
-          <strong>Service times are tentative</strong> and will be confirmed soon.
-          Looking for childcare or accessibility info? <a href="#visit">Get in touch</a>,
-          we'd love to help you plan ahead.
+          Sunday and Wednesday times are still being confirmed. New here? See
+          <a href="#visit">what to expect on your first visit</a> — including kids,
+          parking, and accessibility — or <a href="#visit">get in touch</a> and we'll help you plan ahead.
         </p>
       </div>
     </section>
@@ -451,11 +510,116 @@
             <p>The team behind our livestreams, sound, and online presence, helping the Gospel reach beyond the sanctuary.</p>
           </article>
         </div>
+
+        <p class="ministries-cta">Not sure where you'd fit? <a href="#connect">Let's connect</a> — we'll help you find your place at Good Hope.</p>
       </div>
     </section>
 
     <!-- ============================================
-         8. MEET THE PASTOR
+         8. CONNECT — for our church family & regular attenders
+         Give, prayer, watch online, weekly bulletin, serve, stay in touch — in one place.
+         TODO (church): two items below need real links —
+           1) "Give" card: add your online giving link (Givelify, Tithe.ly, CashApp, etc.)
+           2) "Weekly Bulletin" card: link the weekly bulletin PDF
+         Until then those cards point people to email, which is fine.
+         ============================================ -->
+    <section class="section connect" id="connect">
+      <div class="container">
+        <p class="section-eyebrow centered">For Our Church Family</p>
+        <h2 class="section-title centered">Stay Connected</h2>
+        <p class="section-intro centered">
+          Already part of Good Hope — or getting there? Here's everything in one place.
+        </p>
+
+        <div class="connect-grid">
+
+          <article class="connect-card">
+            <div class="connect-icon" aria-hidden="true">
+              <!-- Gift box: giving -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="8" width="18" height="13" rx="1"/>
+                <path d="M3 12h18M12 8v13"/>
+                <path d="M12 8S10.5 3 8 3 5.5 5.5 7.5 7s4.5 1 4.5 1zM12 8s1.5-5 4-5 2.5 2.5.5 4-4.5 1-4.5 1z"/>
+              </svg>
+            </div>
+            <h3>Give</h3>
+            <p>Your generosity keeps every ministry going. Give during Sunday worship, or mail your gift to the church office at 821 Sampson St., Westlake, LA 70669.</p>
+            <a class="connect-action" href="mailto:goodhopebap@outlook.com?subject=Question%20about%20giving">Ask about giving</a>
+          </article>
+
+          <article class="connect-card connect-card--accent">
+            <div class="connect-icon" aria-hidden="true">
+              <!-- Heart: prayer / care -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.7A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+              </svg>
+            </div>
+            <h3>Prayer Requests</h3>
+            <p>However big or small — let us pray with you. Your request goes straight to the pastor.</p>
+            <a class="connect-action" href="mailto:goodhopebap@outlook.com?subject=Prayer%20Request&body=Name%20(optional)%3A%20%0A%0AMy%20prayer%20request%3A%0A">Share a prayer request</a>
+          </article>
+
+          <article class="connect-card">
+            <div class="connect-icon" aria-hidden="true">
+              <!-- Play in a frame: watch online -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M10 9l5 3-5 3z"/>
+              </svg>
+            </div>
+            <h3>Watch &amp; Listen</h3>
+            <p>Missed a Sunday, or worshiping from home? Catch the service on our YouTube channel.</p>
+            <a class="connect-action" href="https://www.youtube.com/@goodhopebaptistchurch3423" target="_blank" rel="noopener">Watch on YouTube</a>
+          </article>
+
+          <article class="connect-card">
+            <div class="connect-icon" aria-hidden="true">
+              <!-- Document: weekly bulletin -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 3v5h5"/>
+                <path d="M9 13h6M9 17h5"/>
+              </svg>
+            </div>
+            <h3>Weekly Bulletin</h3>
+            <p>This week's announcements, order of service, and what's coming up at Good Hope.</p>
+            <a class="connect-action" href="mailto:goodhopebap@outlook.com?subject=This%20week%27s%20bulletin">Request the bulletin</a>
+          </article>
+
+          <article class="connect-card">
+            <div class="connect-icon" aria-hidden="true">
+              <!-- Open hand: serve -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 11V6a1.5 1.5 0 0 0-3 0v5"/>
+                <path d="M15 10.5V4a1.5 1.5 0 0 0-3 0v6.5"/>
+                <path d="M12 10.5V6a1.5 1.5 0 0 0-3 0v8"/>
+                <path d="M18 8a1.5 1.5 0 0 1 3 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.3-3.3a1.5 1.5 0 0 1 2.1-2.1L7 14.5"/>
+              </svg>
+            </div>
+            <h3>Serve on a Team</h3>
+            <p>Ushers, music, media, children, missions and more — there's a place for your gifts.</p>
+            <a class="connect-action" href="#ministries">See all ministries</a>
+          </article>
+
+          <article class="connect-card">
+            <div class="connect-icon" aria-hidden="true">
+              <!-- Bell: stay in the loop -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+              </svg>
+            </div>
+            <h3>Stay in the Loop</h3>
+            <p>Follow Good Hope on Facebook for announcements, photos, and event reminders.</p>
+            <a class="connect-action" href="https://www.facebook.com/GoodHopeBaptistChurch" target="_blank" rel="noopener">Follow on Facebook</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         9. MEET THE PASTOR
          Replace the photo with Pastor Ceasar's actual photo when available.
          ============================================ -->
     <section class="section pastor" id="pastor">
@@ -492,7 +656,7 @@
     </section>
 
     <!-- ============================================
-         9. THE SHEPHERDS WHO CAME BEFORE
+         10. THE SHEPHERDS WHO CAME BEFORE
          A small honor section for past pastors.
          ============================================ -->
     <section class="section shepherds" id="shepherds" aria-label="Past pastors of Good Hope">
@@ -524,17 +688,56 @@
     </section>
 
     <!-- ============================================
-         10. VISIT US
-         Address, phone, email, and embedded map.
+         11. PLAN YOUR VISIT
+         First-visit FAQ (native <details> accordion, no JS needed), then
+         address, phone, email, and embedded map.
+         NOTE (church): a few FAQ answers below are best-guess placeholders —
+         please correct arrival time, parking, service length, and accessibility details.
          ============================================ -->
     <section class="section visit" id="visit">
       <div class="container">
         <p class="section-eyebrow centered">We'd Love to Meet You</p>
-        <h2 class="section-title centered">Visit Us</h2>
+        <h2 class="section-title centered">Plan Your Visit</h2>
+        <p class="section-intro centered">
+          Walking into a church for the first time takes a little courage — here's what to
+          expect, so you can relax and just join us.
+        </p>
 
+        <div class="faq" aria-label="First-visit questions">
+          <details class="faq-item">
+            <summary>What time should I get there?</summary>
+            <div class="faq-body"><p>Come a few minutes early if you can — around 9:45&nbsp;AM on Sunday — so someone can greet you and help you find a seat. Running late? That's fine too; slip in whenever you arrive.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What should I wear?</summary>
+            <div class="faq-body"><p>Come as you are. On a typical Sunday you'll see everything from suits and Sunday dresses to slacks and nice jeans. We care that you're here, not what you're wearing.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Where do I park?</summary>
+            <div class="faq-body"><p>Parking is available at the church on Sampson Street. If you need help finding a spot or the closest entrance, an usher will be glad to point the way.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What about my kids?</summary>
+            <div class="faq-body"><p>Children are always welcome in worship. We also have Sunday School classes for every age and a caring children's ministry — just ask an usher or greeter and we'll help your little ones get settled.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How long is the service?</summary>
+            <div class="faq-body"><p>Sunday morning worship usually runs about an hour and a half — hymns and gospel music, prayer, Scripture, and a message from God's Word. Many folks stay to visit afterward; you're welcome to as well.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is the building accessible?</summary>
+            <div class="faq-body"><p>Yes. If you have specific accessibility needs (seating, hearing, mobility), let us know ahead of time at <a href="mailto:goodhopebap@outlook.com?subject=Accessibility%20question">goodhopebap@outlook.com</a> and we'll make sure you're taken care of.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I watch online first?</summary>
+            <div class="faq-body"><p>Absolutely — join us on <a href="https://www.youtube.com/@goodhopebaptistchurch3423" target="_blank" rel="noopener">our YouTube channel</a>. It's a great way to get a feel for Good Hope before you visit in person.</p></div>
+          </details>
+        </div>
+
+        <h3 class="visit-subhead">Find Us</h3>
         <div class="visit-grid">
           <div class="visit-info">
-            <h3>Find Us</h3>
+            <h3>Address</h3>
             <address>
               <p><strong>Good Hope Missionary Baptist Church</strong></p>
               <p>821 Sampson St.<br />Westlake, Louisiana 70669</p>
@@ -598,8 +801,9 @@
           <li><a href="#services">Service Times</a></li>
           <li><a href="#beliefs">What We Believe</a></li>
           <li><a href="#ministries">Ministries</a></li>
+          <li><a href="#connect">Connect</a></li>
           <li><a href="#pastor">Our Pastor</a></li>
-          <li><a href="#visit">Visit Us</a></li>
+          <li><a href="#visit">Plan Your Visit</a></li>
         </ul>
       </nav>
 

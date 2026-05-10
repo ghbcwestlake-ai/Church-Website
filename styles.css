@@ -422,7 +422,11 @@ p:last-child { margin-bottom: 0; }
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
+  /* Fill the screen below the announcement bar + header. The bar's height
+     varies with how its text wraps, so this is approximate; the clamp keeps
+     it sane on very short and very tall screens. */
   min-height: calc(100vh - var(--header-height));
+  min-height: clamp(540px, calc(100svh - var(--header-height) - 2.75rem), 920px);
   display: flex;
   align-items: center;
   color: var(--white);
@@ -467,15 +471,6 @@ p:last-child { margin-bottom: 0; }
   text-transform: uppercase;
   color: var(--gold);
   margin: 0 0 var(--space-2);
-}
-
-.hero-title {
-  color: var(--white);
-  font-family: var(--font-serif);
-  font-weight: 600;
-  margin: 0 0 var(--space-2);
-  font-size: clamp(2.5rem, 7vw, 4.75rem);
-  line-height: 1.05;
 }
 
 .hero-tagline {
@@ -674,7 +669,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-md);
   padding: var(--space-4);
   text-align: center;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), opacity 0.3s var(--ease);
 }
 .service-card:hover {
   transform: translateY(-3px);
@@ -783,7 +778,7 @@ p:last-child { margin-bottom: 0; }
   background: var(--cream);
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.3s var(--ease);
 }
 .ministry-card:hover {
   transform: translateY(-4px);
@@ -1235,4 +1230,369 @@ p:last-child { margin-bottom: 0; }
   border-top: 1px solid rgba(201, 162, 74, 0.25);
   color: rgba(251, 247, 238, 0.9);
   font-size: 1rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   18. INTERACTIONS — active nav link, reveal-on-scroll, back-to-top
+   -------------------------------------------------------------------------- */
+
+/* Active section in the nav (set by script.js scroll-spy) */
+.primary-nav a[aria-current="true"]:not(.nav-cta) {
+  color: var(--navy);
+  font-weight: 600;
+}
+@media (min-width: 960px) {
+  .primary-nav a[aria-current="true"]:not(.nav-cta)::after { width: 100%; }
+}
+
+/* Reveal-on-scroll — the .reveal class is only added by script.js, and only
+   when the visitor hasn't asked for reduced motion, so this stays inert
+   otherwise (no JS / reduced motion = content simply shows). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s var(--ease) var(--reveal-delay, 0ms),
+      transform 0.7s var(--ease) var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Back-to-top button (injected by script.js) */
+.to-top {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(201, 162, 74, 0.5);
+  border-radius: 50%;
+  background: var(--navy-dark);
+  color: var(--gold);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    background 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+.to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.to-top:hover {
+  background: var(--gold);
+  color: var(--navy-dark);
+}
+.to-top svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+
+/* --------------------------------------------------------------------------
+   19. HERO — scroll cue + "times tentative" tag
+   -------------------------------------------------------------------------- */
+.hero-times-flag {
+  white-space: nowrap;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-3);
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: rgba(251, 247, 238, 0.8);
+  border: 1px solid rgba(251, 247, 238, 0.3);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.hero-scroll:hover {
+  color: var(--white);
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+.hero-scroll svg {
+  width: 20px;
+  height: 20px;
+  animation: hero-bob 1.8s var(--ease) infinite;
+}
+@keyframes hero-bob {
+  0%, 100% { transform: translateY(-2px); }
+  50%      { transform: translateY(3px); }
+}
+/* On very short screens (landscape phones) the hero is content-packed — hide the cue */
+@media (max-height: 600px) {
+  .hero-scroll { display: none; }
+}
+
+
+/* --------------------------------------------------------------------------
+   20. 150TH ANNIVERSARY TIMELINE
+   -------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: var(--space-5) auto 0;
+  padding-left: 2.25rem;
+}
+/* The vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(var(--gold), rgba(201, 162, 74, 0.25));
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--space-4);
+}
+.timeline-item:last-child { padding-bottom: 0; }
+/* The dot on the line */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.25rem;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--gold);
+}
+.timeline-date {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.timeline-title {
+  font-size: 1.3rem;
+  margin: 0 0 0.3rem;
+}
+.timeline-detail {
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  margin: 0;
+}
+/* The main June 28 service — make it pop */
+.timeline-item--highlight::before {
+  background: var(--gold);
+  box-shadow: 0 0 0 5px rgba(201, 162, 74, 0.22);
+}
+.timeline-item--highlight .timeline-date {
+  background: var(--gold);
+  color: var(--navy-dark);
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+}
+.timeline-item--highlight .timeline-title {
+  font-size: 1.55rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   21. SERVICE CARD — "tentative" flag + ministries CTA
+   -------------------------------------------------------------------------- */
+.service-flag {
+  display: inline-block;
+  margin: 0 0 var(--space-2);
+  padding: 0.12rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: rgba(31, 65, 115, 0.07);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.ministries-cta {
+  margin-top: var(--space-5);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+.ministries-cta a {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+/* --------------------------------------------------------------------------
+   22. CONNECT — members & regulars hub
+   -------------------------------------------------------------------------- */
+.connect { background: var(--cream-deep); }
+
+.connect-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.connect-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.3s var(--ease);
+}
+.connect-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold);
+}
+.connect-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;             /* squircle — distinct from the round ministry icons */
+  background: var(--navy);
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.connect-icon svg { width: 24px; height: 24px; display: block; }
+.connect-card:hover .connect-icon {
+  background: var(--gold);
+  color: var(--navy-dark);
+  transform: scale(1.05);
+}
+.connect-card h3 {
+  margin: 0 0 var(--space-1);
+  font-size: 1.3rem;
+}
+.connect-card p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 var(--space-3);
+}
+.connect-action {
+  margin-top: auto;                /* pin the link to the bottom so cards line up */
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.connect-action:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+/* Accent card — "Prayer Requests" gets the navy treatment */
+.connect-card--accent {
+  background: var(--navy-dark);
+  border-color: var(--navy-dark);
+}
+.connect-card--accent h3 { color: var(--cream); }
+.connect-card--accent p { color: rgba(251, 247, 238, 0.8); }
+.connect-card--accent .connect-icon { background: var(--gold); color: var(--navy-dark); }
+.connect-card--accent:hover .connect-icon { background: var(--cream); }
+.connect-card--accent .connect-action {
+  color: var(--gold-soft);
+  border-bottom-color: rgba(201, 162, 74, 0.6);
+}
+.connect-card--accent .connect-action:hover {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+@media (min-width: 640px) {
+  .connect-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .connect-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* --------------------------------------------------------------------------
+   23. PLAN YOUR VISIT — first-visit FAQ accordion + "Find Us" sub-head
+   -------------------------------------------------------------------------- */
+.faq {
+  max-width: 760px;
+  margin: var(--space-2) auto var(--space-6);
+  border-top: 1px solid var(--line);
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-1);
+  cursor: pointer;
+  list-style: none;                       /* hide default disclosure triangle */
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  transition: color 0.15s var(--ease);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--red); }
+/* Chevron built from a rotated square */
+.faq-item summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s var(--ease);
+}
+.faq-item[open] summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+.faq-body {
+  padding: 0 var(--space-1) var(--space-3);
+  color: var(--ink-soft);
+  max-width: 64ch;
+}
+.faq-body p { margin: 0; }
+.faq-body a { font-weight: 600; }
+
+.visit-subhead {
+  text-align: center;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0 0 var(--space-4);
 }
