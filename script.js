@@ -104,12 +104,18 @@
       '.welcome-copy, .welcome-figure, .heritage-content, .anniversary-card, ' +
       '.timeline-item, .service-card, .belief-list li, .ministry-card, ' +
       '.connect-card, .faq-item, .pastor-figure, .pastor-copy, ' +
-      '.shepherds-content, .visit-info, .visit-map'
+      '.visit-info, .visit-map, ' +
+      // Sub-page reveals
+      '.page-hero-content, .story-entry, .schedule-card, .shepherds-grid li, ' +
+      '.invitation-content, .visit-cta-card'
     );
 
     // Stagger siblings that sit in the same grid or list
     document
-      .querySelectorAll('.service-card, .ministry-card, .belief-list li, .connect-card, .timeline-item, .faq-item')
+      .querySelectorAll(
+        '.service-card, .ministry-card, .belief-list li, .connect-card, ' +
+        '.timeline-item, .faq-item, .schedule-card, .story-entry, .shepherds-grid li'
+      )
       .forEach((el) => {
         const index = Array.prototype.indexOf.call(el.parentElement.children, el);
         el.style.setProperty('--reveal-delay', `${Math.min(index, 5) * 80}ms`);
