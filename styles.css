@@ -465,11 +465,24 @@ p:last-child { margin-bottom: 0; }
 
 .hero-logo {
   display: block;
-  width: 100%;
-  max-width: 460px;
+  width: auto;
+  max-width: 240px;
+  max-height: 200px;
   height: auto;
   margin: 0 0 var(--space-4);
   filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.25));
+}
+@media (min-width: 768px) {
+  .hero-logo { max-width: 280px; max-height: 240px; }
+}
+/* Center the hero stack on phones; left-align on tablet+ so the desktop
+   composition keeps its weight on the left of the photo. */
+@media (max-width: 640px) {
+  .hero-content { text-align: center; }
+  .hero-logo { margin-left: auto; margin-right: auto; }
+  .hero-anniv { align-items: center; }
+  .hero-actions { justify-content: center; }
+  .hero-times { display: inline-block; }
 }
 
 .hero-eyebrow {
@@ -1053,13 +1066,17 @@ p:last-child { margin-bottom: 0; }
 .ab-badge {
   font-family: var(--font-sans);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   color: var(--gold);
   background: transparent;
   padding: 0;
   border-radius: 0;
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .ab-badge { font-size: 1.05rem; letter-spacing: 0.26em; }
 }
 .ab-text { color: rgba(251, 247, 238, 0.92); }
 .ab-link {
@@ -1410,19 +1427,28 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.97rem;
   margin: 0;
 }
-/* The main June 28 service — make it pop */
+/* The main June 28 service — make it pop without an oval pill (consistent
+   with the star treatment on the /150 featured card). */
 .timeline-item--highlight::before {
   background: var(--gold);
   box-shadow: 0 0 0 5px rgba(201, 162, 74, 0.22);
 }
 .timeline-item--highlight .timeline-date {
-  background: var(--gold);
-  color: var(--navy-dark);
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.14em;
 }
 .timeline-item--highlight .timeline-title {
   font-size: 1.55rem;
+  color: var(--navy);
+}
+.timeline-item--highlight .timeline-title::before {
+  content: "\2605";
+  display: inline-block;
+  margin-right: 0.45rem;
+  color: var(--gold);
+  font-size: 0.85em;
+  vertical-align: 0.05em;
 }
 
 
@@ -1880,11 +1906,113 @@ p:last-child { margin-bottom: 0; }
   border: 1px solid var(--line);
   border-left: 4px solid var(--gold);
   border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
+  padding: 0;
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  overflow: hidden;
 }
 .schedule-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* The clickable head — date + title, plus a chevron affordance on the right. */
+.schedule-card > summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.schedule-card > summary::-webkit-details-marker { display: none; }
+.schedule-card > summary:hover .schedule-title { color: var(--red); }
+.schedule-card > summary:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -3px;
+  border-radius: var(--radius-md);
+}
+.schedule-card > summary .schedule-date,
+.schedule-card > summary .schedule-title { margin: 0; }
+.schedule-card > summary .schedule-date { margin-bottom: var(--space-1); }
+.schedule-chevron {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform 0.25s var(--ease);
+}
+.schedule-card[open] .schedule-chevron {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+/* Body slides open. interpolate-size makes the height transition work even
+   with `height: auto` content (Baseline 2024 — gracefully snaps on older
+   browsers). */
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+  .schedule-body {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s var(--ease);
+  }
+  .schedule-card[open] .schedule-body { height: auto; }
+}
+.schedule-body {
+  padding: 0 var(--space-4) var(--space-3);
+}
+.schedule-card[open] .schedule-body {
+  /* When details is open, the inner content shows. The padding-top adds
+     a subtle gold hairline between summary and body. */
+  border-top: 1px solid rgba(201, 162, 74, 0.25);
+  padding-top: var(--space-3);
+  margin-top: 0;
+}
+.schedule-body p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+.schedule-body p + p { margin-top: var(--space-2); }
+
+/* Top-of-schedule hint */
+.schedule-hint {
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: var(--space-2) auto var(--space-4);
+  font-style: italic;
+}
+.schedule-hint::before {
+  content: "\261D";
+  margin-right: 0.4rem;
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* Featured June 28 card overrides — stays always-open and looks like the
+   prior fixed card rather than an interactive accordion. */
+.schedule-card--featured {
+  padding: var(--space-5) var(--space-4);
+}
+.schedule-card--featured > summary {
+  display: block;
+  grid-template-columns: none;
+  cursor: default;
+  padding: 0;
+}
+.schedule-card--featured > summary .schedule-chevron { display: none; }
+.schedule-card--featured[open] .schedule-body {
+  border-top: 1px solid rgba(201, 162, 74, 0.3);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+.schedule-card--featured .schedule-body p { color: rgba(251, 247, 238, 0.9); }
 .schedule-date {
   font-family: var(--font-sans);
   font-size: 0.76rem;
@@ -1943,6 +2071,13 @@ p:last-child { margin-bottom: 0; }
   color: rgba(251, 247, 238, 0.88);
   max-width: 540px;
   margin: 0 auto;
+}
+.schedule-card--featured .schedule-meta strong {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
 }
 
 /* ---- /150 final CTA section --------------------------------------------- */
@@ -2065,21 +2200,56 @@ p:last-child { margin-bottom: 0; }
 .story-entry--feature .story-eyebrow { color: var(--gold); }
 
 @media (min-width: 768px) {
+  /* Continuous gold rail down the desktop timeline + a dot at each entry,
+     replacing the prior per-entry right border. The rail sits between the
+     year column and the content column. */
+  .story-timeline {
+    position: relative;
+  }
+  .story-timeline::before {
+    content: "";
+    position: absolute;
+    left: 213px;            /* aligned with the right edge of the year column */
+    top: var(--space-3);
+    bottom: var(--space-3);
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgba(201, 162, 74, 0.55),
+      var(--gold) 50%,
+      rgba(201, 162, 74, 0.4));
+    border-radius: 2px;
+  }
   .story-entry {
     grid-template-columns: 200px 1fr;
     gap: var(--space-5);
     align-items: start;
+    position: relative;
+  }
+  .story-entry::after {
+    content: "";
+    position: absolute;
+    left: 206px;
+    top: calc(var(--space-4) + 0.5rem);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 3px solid var(--gold);
+    z-index: 1;
+    box-sizing: border-box;
   }
   .story-year-block {
     text-align: right;
-    padding-right: var(--space-3);
-    border-right: 2px solid rgba(201, 162, 74, 0.4);
+    padding-right: var(--space-4);
+    border-right: none;
   }
   .story-entry--feature {
     grid-template-columns: 200px 1fr;
   }
-  .story-entry--feature .story-year-block {
-    border-right-color: var(--gold);
+  .story-entry--feature::after {
+    background: var(--gold);
+    box-shadow: 0 0 0 6px rgba(201, 162, 74, 0.22);
+    left: 206px;
   }
 }
 
@@ -2120,3 +2290,161 @@ p:last-child { margin-bottom: 0; }
   font-style: italic;
   margin-top: 0.2rem;
 }
+
+
+/* --------------------------------------------------------------------------
+   25. PLAN YOUR VISIT FORM (Netlify Forms)
+   -------------------------------------------------------------------------- */
+.plan-form-card {
+  max-width: 720px;
+  margin: var(--space-5) auto var(--space-6);
+  padding: var(--space-5) var(--space-4);
+  background: var(--white);
+  border: 1px solid rgba(201, 162, 74, 0.5);
+  border-top: 4px solid var(--gold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+@media (min-width: 640px) {
+  .plan-form-card { padding: var(--space-5); }
+}
+.plan-form-card h3 {
+  text-align: center;
+  margin: 0 0 var(--space-1);
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+}
+.plan-form-intro {
+  text-align: center;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin: 0 auto var(--space-4);
+}
+
+.plan-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.hidden-honeypot { display: none; }
+
+.form-row {
+  display: grid;
+  gap: 0.4rem;
+}
+.form-row label,
+.form-checkboxes legend {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.form-row .form-required { color: var(--red); margin-left: 0.2rem; }
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"],
+.form-row textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease), box-shadow 0.15s var(--ease);
+}
+.form-row textarea {
+  min-height: 110px;
+  resize: vertical;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.25);
+}
+
+.form-checkboxes {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.form-checkboxes legend { margin-bottom: var(--space-2); padding: 0; }
+.form-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1) var(--space-3);
+}
+@media (min-width: 540px) {
+  .form-checkbox-grid { grid-template-columns: 1fr 1fr; }
+}
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.97rem;
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s var(--ease);
+}
+.form-checkbox:hover { background: var(--cream); }
+.form-checkbox input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15rem;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+
+.form-submit {
+  margin-top: var(--space-2);
+  text-align: center;
+}
+.form-fine-print {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: var(--space-2);
+}
+
+/* Thanks page */
+.thanks-page {
+  min-height: calc(100vh - var(--header-height));
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  padding: var(--space-6) 0;
+}
+.thanks-card {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-5) var(--space-4);
+}
+.thanks-mark {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--space-3);
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.thanks-card h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 var(--space-3);
+}
+.thanks-card p { color: var(--ink-soft); margin: 0 auto var(--space-2); max-width: 480px; }
+.thanks-actions { margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center; }

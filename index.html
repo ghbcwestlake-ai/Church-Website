@@ -140,7 +140,7 @@
       <div class="hero-overlay"></div>
       <div class="container hero-content">
         <img
-          src="Logos/GHPC-primary-white-horizontal.png"
+          src="Logos/GHPC_full_color_vertical_Gold_transparent.png"
           alt="Good Hope Missionary Baptist Church"
           class="hero-logo"
         />
@@ -153,10 +153,10 @@
         </div>
 
         <p class="hero-tagline">A Community of Faith Since 1876</p>
-        <p class="hero-times">Sundays at 10:00 AM &middot; Wednesdays at 5:30 PM</p>
+        <p class="hero-times">Sundays at 9:30 AM &middot; Wednesdays at 5:30 PM</p>
 
         <div class="hero-actions">
-          <a href="#visit" class="btn btn-primary btn-lg">Plan Your Visit</a>
+          <a href="#plan-form" class="btn btn-primary btn-lg">Plan Your Visit</a>
           <a href="/150/" class="btn btn-ghost btn-lg">Join Our 150th Celebration</a>
         </div>
       </div>
@@ -272,17 +272,17 @@
 
         <ol class="timeline" aria-label="150th anniversary highlights">
           <li class="timeline-item">
-            <span class="timeline-date">June 3</span>
-            <h3 class="timeline-title">Celebration Begins</h3>
-            <p class="timeline-detail">Wednesday Fellowship Game Night kicks off a month of worship, fellowship, and remembrance.</p>
+            <span class="timeline-date">Kickoff Week &middot; June 3</span>
+            <h3 class="timeline-title">Game Night Opens the Celebration</h3>
+            <p class="timeline-detail">A relaxed Wednesday evening of fellowship and games. Bring the family.</p>
           </li>
           <li class="timeline-item">
-            <span class="timeline-date">All June</span>
-            <h3 class="timeline-title">Worship &amp; Fellowship</h3>
-            <p class="timeline-detail">Guest preachers, themed Sundays, prayer walks, Wednesday Night Fellowship, parade and picnic &mdash; every gathering is open.</p>
+            <span class="timeline-date">Throughout June</span>
+            <h3 class="timeline-title">Worship Every Sunday &amp; Wednesday</h3>
+            <p class="timeline-detail">Guest preachers, themed Sundays, prayer walks, midweek fellowship, parade and picnic. Every gathering is open.</p>
           </li>
           <li class="timeline-item timeline-item--highlight">
-            <span class="timeline-date">Sunday, June 28 &middot; 2:00 PM</span>
+            <span class="timeline-date">Anniversary Sunday &middot; June 28 &middot; 2:00 PM</span>
             <h3 class="timeline-title">150th Anniversary Worship Service</h3>
             <p class="timeline-detail">Guest speaker Rev. Samuel C. Tolbert. Sunday best &mdash; shades of brown with gold accents.</p>
           </li>
@@ -308,15 +308,15 @@
           <article class="service-card">
             <p class="service-day">Sunday</p>
             <h3>Morning Worship</h3>
-            <p class="service-time">10:00 AM</p>
-            <p class="service-detail">Hymns, Scripture, and a sermon from God&rsquo;s Word in our main sanctuary.</p>
+            <p class="service-time">9:30 AM</p>
+            <p class="service-detail">We gather to worship, pray, and hear the Word of God together as a church family. Come as you are.</p>
           </article>
 
           <article class="service-card">
             <p class="service-day">Wednesday</p>
             <h3>Night Fellowship</h3>
             <p class="service-time">5:30 PM</p>
-            <p class="service-detail">Midweek prayer, Bible study, and fellowship for the whole church family.</p>
+            <p class="service-detail">Midweek prayer, Bible study, and time together. A good way to break up the week.</p>
           </article>
 
           <article class="service-card service-card--accent">
@@ -335,7 +335,7 @@
         </p>
 
         <div class="section-cta">
-          <a href="#visit" class="btn btn-primary btn-lg">Plan Your First Visit &rarr;</a>
+          <a href="#plan-form" class="btn btn-primary btn-lg">Plan Your First Visit &rarr;</a>
         </div>
       </div>
     </section>
@@ -414,7 +414,7 @@
               </svg>
             </div>
             <h3>Mission</h3>
-            <p>Sharing the love of Christ beyond our walls through outreach, evangelism, and care for our Westlake neighbors.</p>
+            <p>Bringing the love of Christ to our Westlake neighbors &mdash; through outreach, simple acts of care, and sharing the Good News.</p>
           </article>
 
           <article class="ministry-card">
@@ -721,11 +721,83 @@
           </details>
         </div>
 
-        <div class="visit-cta-card">
-          <h3>Have a question before you come?</h3>
-          <p>We&rsquo;d love to help you plan your first visit.</p>
-          <a href="mailto:goodhopebap@outlook.com?subject=Planning%20my%20first%20visit" class="btn btn-primary btn-lg">Email Us About Your Visit</a>
-          <span class="visit-cta-phone">Or call <a href="tel:+13374337403">(337)&nbsp;433-7403</a></span>
+        <!-- ============================================
+             PLAN YOUR VISIT FORM (Netlify Forms)
+             The data-netlify="true" attribute activates Netlify form
+             handling — submissions appear in the Netlify dashboard
+             (Forms tab) and can be emailed to goodhopebap@outlook.com
+             once the form is connected in the Netlify UI.
+             TODO (church/admin):
+               1. After first successful deploy, go to Netlify dashboard
+                  → Forms → "plan-your-visit" → Settings → Form
+                  notifications and add an email notification to
+                  goodhopebap@outlook.com.
+               2. For a CRM / automated welcome video sequence, the next
+                  step is Zapier or Make connecting Netlify Forms to
+                  MailerLite (or Mailchimp / Planning Center People).
+                  That work happens outside this codebase.
+             ============================================ -->
+        <div id="plan-form" class="plan-form-card">
+          <h3>Tell us you&rsquo;re coming.</h3>
+          <p class="plan-form-intro">
+            Drop your info and Pastor Tim will reach out personally. We never share
+            your details and we don&rsquo;t add you to anything you didn&rsquo;t ask for.
+          </p>
+
+          <form
+            name="plan-your-visit"
+            method="POST"
+            action="/thanks/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="plan-form"
+          >
+            <!-- Honeypot for spam bots — humans never see this -->
+            <p class="hidden-honeypot">
+              <label>Don&rsquo;t fill this out if you&rsquo;re human:
+                <input name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </p>
+            <!-- Required by Netlify for JS-rendered forms; harmless here -->
+            <input type="hidden" name="form-name" value="plan-your-visit" />
+
+            <div class="form-row">
+              <label for="visit-name">Name <span class="form-required" aria-hidden="true">*</span></label>
+              <input id="visit-name" type="text" name="name" required autocomplete="name" />
+            </div>
+
+            <div class="form-row">
+              <label for="visit-email">Email <span class="form-required" aria-hidden="true">*</span></label>
+              <input id="visit-email" type="email" name="email" required autocomplete="email" />
+            </div>
+
+            <div class="form-row">
+              <label for="visit-phone">Phone (optional)</label>
+              <input id="visit-phone" type="tel" name="phone" autocomplete="tel" />
+            </div>
+
+            <fieldset class="form-checkboxes">
+              <legend>What brings you? (check any that fit)</legend>
+              <div class="form-checkbox-grid">
+                <label class="form-checkbox"><input type="checkbox" name="interests" value="First-time visit" /> Planning a first visit</label>
+                <label class="form-checkbox"><input type="checkbox" name="interests" value="Looking for a church home" /> Looking for a church home</label>
+                <label class="form-checkbox"><input type="checkbox" name="interests" value="Have a question" /> I have a question</label>
+                <label class="form-checkbox"><input type="checkbox" name="interests" value="Prayer request" /> I&rsquo;d like prayer</label>
+                <label class="form-checkbox"><input type="checkbox" name="interests" value="Want to serve" /> Interested in serving</label>
+                <label class="form-checkbox"><input type="checkbox" name="interests" value="150th Anniversary" /> Coming for the 150th</label>
+              </div>
+            </fieldset>
+
+            <div class="form-row">
+              <label for="visit-message">Anything you&rsquo;d like us to know? (optional)</label>
+              <textarea id="visit-message" name="message" rows="4"></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary btn-lg">Send to Pastor Tim</button>
+              <p class="form-fine-print">We&rsquo;ll follow up within a couple of days. Prefer to call? <a href="tel:+13374337403">(337)&nbsp;433-7403</a></p>
+            </div>
+          </form>
         </div>
 
         <h3 class="visit-subhead">Find Us</h3>
