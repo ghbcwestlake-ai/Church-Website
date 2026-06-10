@@ -200,10 +200,19 @@ is a single afternoon later.*
 
 ## 🔌 LATER PHASES (parked — not cosmetics)
 
-- [ ] **Form backend.** Wire "Tell us you're coming" form. Likely Netlify Forms
-  → Google Sheets (or Airtable). Decide with church leadership.
-- [ ] **Lead follow-up system.** How captured info reaches Pastor Tim and gets
-  acted on. Comes after the form is wired.
+- [x] **Form backend.** DONE — forms run on Netlify Forms (plan-your-visit,
+  prayer-request, weekly-encouragement). Submissions collect in the Netlify
+  dashboard. Remaining: turn on email notifications (admin step, see Batch F).
+- [ ] **Outreach owner — WHO closes the loop (board decision).** The site
+  captures interest, but a real person must respond. Define a point person /
+  welcome team. Responsibilities: check requests regularly, respond within 48h,
+  route prayer to Pastor/prayer team, welcome + follow up with first-time
+  visitors, send the weekly encouragement note. Dorian may lead this to start.
+- [ ] **Map the full journey (stranger → family).** Define what happens at every
+  step after someone takes an action on the site — visit, prayer, talk, watch,
+  email signup — and who does what. Drafted for the board presentation
+  (2026-06-10); turn the agreed version into a written follow-up playbook.
+- [ ] **Weekly encouragement — sending engine.** (See Batch F.) Tool + writer.
 
 ---
 
