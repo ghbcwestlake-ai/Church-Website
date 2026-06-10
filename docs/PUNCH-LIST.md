@@ -124,20 +124,36 @@
 - [ ] "Plan Your Visit" Q&A — does it answer the real first-timer fears? (Looks
   strong already; just confirm nothing's missing.)
 
-## BATCH E — Strip the 150th content (ACTIVE — decided 2026-06-10)
-*The site won't launch before June 28, so the 150th is no longer its job. Tear
-it out cleanly now; a recap can be rebuilt later if church leadership wants one.*
+## BATCH E — Strip the 150th content (DONE 2026-06-10)
+*The site won't launch before June 28, so the 150th is no longer its job. Torn
+out cleanly; a recap can be rebuilt later if church leadership wants one.*
 
 - [x] Swap hero to evergreen version. — DONE 2026-06-10.
-- [ ] Remove the sticky 150th / June 28 announcement bar at the top of the page.
-- [ ] Remove the big "150 Years" section on the home page.
-- [ ] Retire the `/150/` page and its schedule; remove all nav/links pointing to it.
-- [ ] Simplify the Services section: remove Wednesday and the 150th anniversary
-  worship entry. Consider removing the Services section entirely for now and
-  rebuilding it cleanly later (service times already live in the hero strip).
-- [ ] Update meta description / OG tags that lean on "150 years / since 1876"
-  so the site doesn't read stale.
-- [ ] Sweep footer + any remaining "Celebrating 150 Years / 1876" copy.
+- [x] Removed the sticky 150th / June 28 announcement bar (home + Our Story).
+- [x] Removed the big "150 Years" anniversary section on the home page.
+- [x] Retired the `/150/` page entirely (deleted); removed every nav/footer/CTA
+  link to it across home, Our Story, and the thank-you page. Verified zero
+  `/150/` references remain repo-wide.
+- [x] **Removed the Services section entirely** (per decision — rebuild clean
+  later). Sunday times now live only in the hero info strip. Also dropped the
+  "Coming for the 150th" checkbox from the visit form.
+- [x] Scrubbed stale 150/anniversary copy from meta description, OG/Twitter tags,
+  JSON-LD, footers (home + Our Story), and the og-image template.
+- [x] Fixed hero min-height (no longer subtracts the removed announcement bar).
+
+**Kept on purpose (heritage, not the celebration):** Our Story's full 150-year
+timeline + shepherds; the home Welcome + Heritage sections. ⚠️ These still say
+"150 years" / "Debt Free. Mortgage Burned. 150 Years." — fine as heritage, but
+revisit the phrasing for long-term freshness in Batch F.
+
+**Follow-ups logged:**
+- [ ] Dead-CSS sweep: `.anniversary-bar`/`.ab-*`/`.service-card*`/`.services-notice`
+  are now unused on the home page. Confirm Our Story doesn't rely on them, then
+  remove from styles.css. (Left in place now — harmless, and `.timeline`/
+  `.anniversary-card` styling is still used by Our Story.)
+- [ ] **Rebuild a Sunday section, fresh thinking** (replaces old Services): lead
+  with "Sunday Worship 9:30 AM," explain what a Sunday looks like, note Children's
+  Ministry (ages 3–12). Keep it simple; build back as content is ready.
 
 ## BATCH F — Section-by-section content & flow (from 2026-06-10 walkthrough)
 *Captured during review. Content/copy/structure refinements — mostly need a
@@ -194,6 +210,13 @@ is a single afternoon later.*
   ✓. FB + YouTube need a manual click to confirm. og-image.png is MISSING →
   blank social-share previews (logged, parked, needs headless render). Next:
   knock out 🤔 decisions, or start Batch A copy polish.
+- 2026-06-10 — BATCH E DONE (strip 150th sitewide). Removed announcement bar,
+  the home 150 section, the entire Services section, and the `/150/` page; fixed
+  every link that pointed to it across home / Our Story / thanks (zero `/150/`
+  refs remain). Scrubbed stale 150 copy from meta/OG/JSON-LD/footers/og-image.
+  Kept all genuine heritage content (Our Story timeline, home Heritage/Welcome).
+  Hero min-height fixed. PUSHED hero earlier; Batch E changes UNCOMMITTED pending
+  review. Next: review live, then push Batch E. Then Batch F (section content).
 - 2026-06-10 — HERO REBUILT (cosmetics). Full-color logo in a refined cream card,
   evergreen copy, one primary "Plan Your Visit" (→#visit) + three pill paths
   (New Here?→#welcome, Need Prayer?→#connect, Talk With Us→#plan-form), and a new

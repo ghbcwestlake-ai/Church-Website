@@ -430,11 +430,10 @@ p:last-child { margin-bottom: 0; }
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
-  /* Fill the screen below the announcement bar + header. The bar's height
-     varies with how its text wraps, so this is approximate; the clamp keeps
-     it sane on very short and very tall screens. */
+  /* Fill the screen below the sticky header. The clamp keeps it sane on very
+     short and very tall screens. */
   min-height: calc(100vh - var(--header-height));
-  min-height: clamp(540px, calc(100svh - var(--header-height) - 2.75rem), 920px);
+  min-height: clamp(540px, calc(100svh - var(--header-height)), 920px);
   display: flex;
   align-items: center;
   color: var(--white);

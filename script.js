@@ -101,8 +101,8 @@
   /* ---- Reveal-on-scroll -------------------------------------------------- */
   if (!reduceMotion && 'IntersectionObserver' in window) {
     const revealEls = document.querySelectorAll(
-      '.welcome-copy, .welcome-figure, .heritage-content, .anniversary-card, ' +
-      '.timeline-item, .service-card, .belief-list li, .ministry-card, ' +
+      '.welcome-copy, .welcome-figure, .heritage-content, ' +
+      '.timeline-item, .belief-list li, .ministry-card, ' +
       '.connect-card, .faq-item, .pastor-figure, .pastor-copy, ' +
       '.visit-info, .visit-map, ' +
       // Sub-page reveals
