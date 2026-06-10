@@ -42,29 +42,59 @@
 
 - [ ] Remove the "service times still being confirmed / please call to verify"
   disclaimer once times are locked (see decision above).
-- [ ] Read every section aloud once for typos, awkward phrasing, and consistency
+  — BLOCKED on the 🤔 service-times decision. Not touched.
+- [~] Read every section aloud once for typos, awkward phrasing, and consistency
   (e.g. curly vs straight apostrophes appear mixed in places).
-- [ ] Confirm the church name is rendered consistently everywhere
+  — 2026-06-09: MECHANICAL part done — converted all straight apostrophes in
+  visible body copy to `&rsquo;` to match the site's dominant style (13 fixes in
+  index.html; subpages were already clean). Left `<title>`/meta apostrophes
+  straight on purpose (conventional, not on-page). The judgment part (reading
+  for typos / awkward phrasing) still needs a human pass.
+- [x] Confirm the church name is rendered consistently everywhere
   ("Good Hope Missionary Baptist Church") including image alt text — some logo
   alt text and file names use "GHPC" / "GHBC" inconsistently.
+  — 2026-06-09: VERIFIED clean. All alt text reads "Good Hope Missionary Baptist
+  Church" (no GHPC/GHBC anywhere in alt); visible full name is consistent.
+  ⚠️ FLAG: og:title/twitter:title on /150 use "Good Hope MBC" (abbreviation) —
+  left as-is (defensible for share-card length; your call to standardize).
+  NOTE: logo *filenames* still use "GHPC-*" — intentionally parked to the photo
+  pass per the brief (renaming files isn't a cosmetic-safe text edit).
 - [ ] Beliefs section: confirm the 5 points read the way church leadership wants
   them stated (this is doctrine — worth a second set of eyes).
-- [ ] Check the address is identical in all three places it appears (hero/connect,
+  — JUDGMENT / doctrine. Not touched; needs church leadership review.
+- [x] Check the address is identical in all three places it appears (hero/connect,
   Find Us, footer): "821 Sampson St., Westlake, LA 70669."
+  — 2026-06-09: now uniform across all 6 display spots as
+  **"821 Sampson St., Westlake, Louisiana 70669"**. ⚠️ NOTE: I normalized to the
+  site's dominant "Louisiana" (6 of 7 already used it; only the giving card said
+  "LA"). The brief's example said "LA" — easy one-word flip if you'd rather
+  abbreviate everywhere instead. (JSON-LD + map-link URLs left in their own
+  required formats.)
 
 ## BATCH B — Links, contact info & technical hygiene
 *One mode: clicking things and verifying they go where they should.*
 
-- [ ] Verify every nav anchor link jumps to the right section
+- [x] Verify every nav anchor link jumps to the right section
   (#welcome, #services, #beliefs, #ministries, #connect, #visit, #pastor).
-- [ ] Confirm phone link dials correctly: (337) 433-7403.
-- [ ] Confirm all `mailto:` links open with the right subject lines.
-- [ ] Test Facebook + YouTube links open the correct, live pages.
-- [ ] Confirm the Google Maps embed points to the correct address/pin.
-- [ ] Check the favicon and the `og-image.png` (social share preview) look right
+  — 2026-06-09: all 10 anchors resolve to real section IDs. ✓
+- [x] Confirm phone link dials correctly: (337) 433-7403.
+  — `tel:+13374337403` in all 7 spots, consistent. ✓
+- [x] Confirm all `mailto:` links open with the right subject lines.
+  — all → goodhopebap@outlook.com, contextual subjects correct. ✓
+- [~] Test Facebook + YouTube links open the correct, live pages.
+  — URLs resolve and page titles match the church, but a login wall blocks an
+  automated check. NEEDS a manual click to confirm they're the right, active pages.
+- [x] Confirm the Google Maps embed points to the correct address/pin.
+  — embed `q=821 Sampson St, Westlake, LA 70669`. ✓
+- [~] Check the favicon and the `og-image.png` (social share preview) look right
   when the link is pasted into a text/Facebook.
-- [ ] Confirm meta description / titles are accurate (they reference 150 years —
+  — favicon OK (secondary full-color logo). 🔴 **og-image.png is MISSING**: all 3
+  pages reference `/og-image.png` but the file was never generated, so social
+  share previews are blank/broken. Template exists (`og-image.html`, 1200×630);
+  needs rendering to a PNG at the repo root. PARKED for now (needs headless render).
+- [x] Confirm meta description / titles are accurate (they reference 150 years —
   fine for now, revisit in post-June batch).
+  — all 3 pages have accurate, distinct titles + descriptions. ✓
 
 ## BATCH C — Visual & layout polish
 *One mode: how it looks. Spacing, alignment, color, type, mobile.*
@@ -133,3 +163,14 @@ is a single afternoon later.*
 *One line per morning: date — what got done — where to pick up next.*
 
 - 2026-__-__ — Set up Project + foundation docs. Next: knock out 🤔 decisions.
+- 2026-06-09 — Batch B verification pass: nav / phone / mailto / Maps / meta all
+  ✓. FB + YouTube need a manual click to confirm. og-image.png is MISSING →
+  blank social-share previews (logged, parked, needs headless render). Next:
+  knock out 🤔 decisions, or start Batch A copy polish.
+- 2026-06-09 — Batch A mechanical pass (no judgment calls): fixed all straight
+  apostrophes in visible copy → `&rsquo;` (13 edits, index.html); normalized the
+  address to a single uniform string everywhere ("Westlake, Louisiana 70669");
+  verified church-name + alt-text consistency (clean). Left for a human:
+  service-times disclaimer (blocked on decision), full read-aloud typo/phrasing
+  pass, Beliefs doctrine review, and two flags (og:title "Good Hope MBC";
+  LA-vs-Louisiana direction). Changes are UNCOMMITTED pending review.
