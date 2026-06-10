@@ -256,6 +256,64 @@ navy + gold palette. Structure below.)*
 
 ---
 
+## SLIDE 19 — The Road Ahead
+
+### How we get from here to launch — and beyond
+
+1. **Finish the foundation** *(in progress)* — polish the wording and order the
+   page so it flows for a first-time visitor.
+2. **Make it real** — add real photos of our people, our building, and Pastor
+   Tim, and record a short welcome video.
+3. **Turn on the follow-up** — make sure every prayer request and visit form
+   reaches a real person who responds.
+4. **Launch** — share the link with our church family first, then the wider
+   community.
+5. **Keep it alive** — send the weekly encouragement notes and keep the site
+   current.
+
+> Speaker note: We are at the end of Step 1. Steps 2 and 3 are where the board's
+> help matters most.
+
+---
+
+## SLIDE 20 — What We Need to Decide Together
+
+### Where the board's input matters most
+
+1. **Who owns the follow-up?** Who responds when someone reaches out? *(The most
+   important decision — see next slide.)*
+2. **Can we approve a photoshoot?** Real photos are the single biggest upgrade
+   left.
+3. **Are the facts right?** Confirm our service times, Pastor's bio, and how our
+   beliefs are stated.
+4. **A welcome video from Pastor Tim** — are we comfortable recording a short
+   (30–60 second) "we'd love to meet you"?
+5. **The weekly encouragement note** — who writes it, and is starting with email
+   (no texting yet) acceptable?
+6. **When do we launch,** and who do we share it with first?
+
+---
+
+## SLIDE 21 — How You Can Help
+
+### A few specific asks
+
+- **Name (or bless) a point person** for outreach and follow-up.
+- **Help gather real photos** and the details we need.
+- **Review your areas for accuracy** — beliefs, history, and Pastor's bio.
+- **Spread the word** once we launch — your invitation is the most powerful one.
+
+---
+
+## SLIDE 22 — Let's Discuss
+
+### Our next step, together
+
+> The website is built and ready to grow. **What can we decide today** to keep
+> moving — and who's ready to help carry it forward?
+
+---
+
 ## Appendix — Quick Facts (for Q&A, not a slide)
 
 - **Format:** one scrolling page, plus an "Our Story" history page.
