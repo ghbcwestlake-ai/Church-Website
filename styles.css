@@ -1626,6 +1626,71 @@ p:last-child { margin-bottom: 0; }
   .connect-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Prayer-request panel — reuses .plan-form-card; just centers a heart icon */
+.connect-prayer { margin-bottom: 0; }
+.connect-prayer-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto var(--space-2);
+  border-radius: 14px;
+  background: var(--navy);
+  color: var(--gold);
+}
+.connect-prayer-icon svg { width: 26px; height: 26px; display: block; }
+
+/* Weekly-encouragement sign-up — slim navy panel below the connect cards */
+.connect-encourage {
+  max-width: 720px;
+  margin: var(--space-4) auto 0;
+  padding: var(--space-4);
+  background: var(--navy);
+  color: var(--cream);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.connect-encourage h3 {
+  color: var(--cream);
+  margin: 0 0 var(--space-1);
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+}
+.connect-encourage-text p {
+  color: rgba(251, 247, 238, 0.82);
+  max-width: 520px;
+  margin: 0 auto var(--space-3);
+  font-size: 0.97rem;
+}
+.connect-encourage-form { margin: 0; }
+.encourage-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.encourage-fields input[type="text"],
+.encourage-fields input[type="email"] {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s var(--ease), background 0.15s var(--ease), box-shadow 0.15s var(--ease);
+}
+.encourage-fields input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.3);
+}
+.encourage-fields .btn { flex: 0 0 auto; }
+.connect-encourage .form-fine-print { color: rgba(251, 247, 238, 0.7); }
+
 
 /* --------------------------------------------------------------------------
    23. PLAN YOUR VISIT — first-visit FAQ accordion + "Find Us" sub-head

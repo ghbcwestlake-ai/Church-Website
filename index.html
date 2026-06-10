@@ -428,48 +428,79 @@
     </section>
 
     <!-- ============================================
-         8. CONNECT — for our church family & regular attenders
-         Give, prayer, watch online, weekly bulletin, serve, stay in touch — in one place.
-         TODO (church): two items below need real links —
-           1) "Give" card: add your online giving link (Givelify, Tithe.ly, CashApp, etc.)
-           2) "Weekly Bulletin" card: link the weekly bulletin PDF
-         Until then those cards point people to email, which is fine.
+         8. CONNECT WITH US — newcomer-first
+         Lead: a low-pressure prayer request (inline Netlify form). Then light
+         ways to watch / find a place / follow. Then a weekly-encouragement
+         EMAIL sign-up (a step below visiting).
+         TODO (church/admin): after deploy, open Netlify dashboard → Forms and
+         add email notifications for "prayer-request" and "weekly-encouragement"
+         (route to goodhopebap@outlook.com / Pastor Tim).
+         NOTE: this only COLLECTS encouragement sign-ups. Actually sending a
+         weekly email (writer + tool like MailerLite/Mailchimp) is a later
+         phase. Text/SMS is deferred (cost + opt-in compliance).
          ============================================ -->
     <section class="section connect" id="connect">
       <div class="container">
-        <p class="section-eyebrow centered">For Our Church Family</p>
-        <h2 class="section-title centered">Stay Connected</h2>
+        <p class="section-eyebrow centered">We&rsquo;d Love to Meet You</p>
+        <h2 class="section-title centered">Connect With Us</h2>
         <p class="section-intro centered">
-          Already part of Good Hope — or getting there? Here&rsquo;s everything in one place.
+          Wherever you are on the journey, there&rsquo;s a place for you here.
+          Start with whatever feels right.
         </p>
 
+        <!-- Prayer request — the lead action (Netlify Forms) -->
+        <div class="plan-form-card connect-prayer">
+          <div class="connect-prayer-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.7A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+            </svg>
+          </div>
+          <h3>Need prayer?</h3>
+          <p class="plan-form-intro">
+            However big or small, we&rsquo;d be honored to pray with you. Share as
+            much or as little as you like &mdash; it goes straight to our pastor,
+            held in confidence.
+          </p>
+
+          <form
+            name="prayer-request"
+            method="POST"
+            action="/thanks/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="plan-form"
+          >
+            <p class="hidden-honeypot">
+              <label>Don&rsquo;t fill this out if you&rsquo;re human:
+                <input name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </p>
+            <input type="hidden" name="form-name" value="prayer-request" />
+
+            <div class="form-row">
+              <label for="prayer-name">Name (optional)</label>
+              <input id="prayer-name" type="text" name="name" autocomplete="name" />
+            </div>
+
+            <div class="form-row">
+              <label for="prayer-contact">Email or phone (optional, if you&rsquo;d like a reply)</label>
+              <input id="prayer-contact" type="text" name="contact" autocomplete="email" />
+            </div>
+
+            <div class="form-row">
+              <label for="prayer-request">Your prayer request <span class="form-required" aria-hidden="true">*</span></label>
+              <textarea id="prayer-request" name="request" rows="4" required></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary btn-lg">Send My Request</button>
+              <p class="form-fine-print">Held in confidence. Prefer to call? <a href="tel:+13374337403">(337)&nbsp;433-7403</a></p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Light ways to stay connected -->
         <div class="connect-grid">
-
-          <article class="connect-card">
-            <div class="connect-icon" aria-hidden="true">
-              <!-- Gift box: giving -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="8" width="18" height="13" rx="1"/>
-                <path d="M3 12h18M12 8v13"/>
-                <path d="M12 8S10.5 3 8 3 5.5 5.5 7.5 7s4.5 1 4.5 1zM12 8s1.5-5 4-5 2.5 2.5.5 4-4.5 1-4.5 1z"/>
-              </svg>
-            </div>
-            <h3>Give</h3>
-            <p>Your generosity keeps every ministry going. Give during Sunday worship, or mail your gift to the church office at 821 Sampson St., Westlake, Louisiana 70669.</p>
-            <a class="connect-action" href="mailto:goodhopebap@outlook.com?subject=Question%20about%20giving">Ask about giving</a>
-          </article>
-
-          <article class="connect-card connect-card--accent">
-            <div class="connect-icon" aria-hidden="true">
-              <!-- Heart: prayer / care -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.7A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
-              </svg>
-            </div>
-            <h3>Prayer Requests</h3>
-            <p>However big or small — let us pray with you. Your request goes straight to the pastor.</p>
-            <a class="connect-action" href="mailto:goodhopebap@outlook.com?subject=Prayer%20Request&body=Name%20(optional)%3A%20%0A%0AMy%20prayer%20request%3A%0A">Share a prayer request</a>
-          </article>
 
           <article class="connect-card">
             <div class="connect-icon" aria-hidden="true">
@@ -479,28 +510,14 @@
                 <path d="M10 9l5 3-5 3z"/>
               </svg>
             </div>
-            <h3>Watch &amp; Listen</h3>
-            <p>Missed a Sunday, or worshiping from home? Catch the service on our YouTube channel.</p>
+            <h3>Watch a Service</h3>
+            <p>Curious what a Sunday feels like? Watch a service from home on our YouTube channel before you ever visit in person.</p>
             <a class="connect-action" href="https://www.youtube.com/@goodhopebaptistchurch3423" target="_blank" rel="noopener">Watch on YouTube</a>
           </article>
 
           <article class="connect-card">
             <div class="connect-icon" aria-hidden="true">
-              <!-- Document: weekly bulletin -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
-                <path d="M14 3v5h5"/>
-                <path d="M9 13h6M9 17h5"/>
-              </svg>
-            </div>
-            <h3>Weekly Bulletin</h3>
-            <p>This week&rsquo;s announcements, order of service, and what&rsquo;s coming up at Good Hope.</p>
-            <a class="connect-action" href="mailto:goodhopebap@outlook.com?subject=This%20week%27s%20bulletin">Request the bulletin</a>
-          </article>
-
-          <article class="connect-card">
-            <div class="connect-icon" aria-hidden="true">
-              <!-- Open hand: serve -->
+              <!-- Open hand: find your place -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 11V6a1.5 1.5 0 0 0-3 0v5"/>
                 <path d="M15 10.5V4a1.5 1.5 0 0 0-3 0v6.5"/>
@@ -508,9 +525,9 @@
                 <path d="M18 8a1.5 1.5 0 0 1 3 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.3-3.3a1.5 1.5 0 0 1 2.1-2.1L7 14.5"/>
               </svg>
             </div>
-            <h3>Serve on a Team</h3>
-            <p>Ushers, music, media, children, missions and more — there&rsquo;s a place for your gifts.</p>
-            <a class="connect-action" href="#ministries">See all ministries</a>
+            <h3>Find Your Place</h3>
+            <p>From music to children&rsquo;s ministry, there are lots of ways to belong here. Take a look and see where you might fit.</p>
+            <a class="connect-action" href="#ministries">Explore our ministries</a>
           </article>
 
           <article class="connect-card">
@@ -521,12 +538,48 @@
                 <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
               </svg>
             </div>
-            <h3>Stay in the Loop</h3>
-            <p>Follow Good Hope on Facebook for announcements, photos, and event reminders.</p>
+            <h3>Follow Along</h3>
+            <p>Keep up with announcements, photos, and what&rsquo;s happening at Good Hope on Facebook.</p>
             <a class="connect-action" href="https://www.facebook.com/GoodHopeBaptistChurch" target="_blank" rel="noopener">Follow on Facebook</a>
           </article>
 
         </div>
+
+        <!-- Weekly encouragement email sign-up (collection only for now) -->
+        <div class="connect-encourage">
+          <div class="connect-encourage-text">
+            <h3>A word of encouragement each week</h3>
+            <p>
+              Not ready to visit yet? Get a short note of encouragement and
+              Scripture in your inbox each week &mdash; no pressure, and you can
+              unsubscribe anytime.
+            </p>
+          </div>
+
+          <form
+            name="weekly-encouragement"
+            method="POST"
+            action="/thanks/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="connect-encourage-form"
+          >
+            <p class="hidden-honeypot">
+              <label>Don&rsquo;t fill this out if you&rsquo;re human:
+                <input name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </p>
+            <input type="hidden" name="form-name" value="weekly-encouragement" />
+
+            <div class="encourage-fields">
+              <input type="text" name="name" aria-label="First name" placeholder="First name" autocomplete="given-name" />
+              <input type="email" name="email" aria-label="Email address" placeholder="Email address" required autocomplete="email" />
+              <button type="submit" class="btn btn-primary">Sign Me Up</button>
+            </div>
+            <p class="form-fine-print">Email only for now. We&rsquo;ll never share your address.</p>
+          </form>
+        </div>
+
       </div>
     </section>
 

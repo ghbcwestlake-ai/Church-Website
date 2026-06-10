@@ -161,13 +161,18 @@ human voice pass, not mechanical edits.*
 
 - [ ] **Welcome copy.** Rewrite so it reads like a real person wrote it, not
   generic filler.
-- [ ] **Connect — define the destinations.** For each Connect action (give,
-  prayer, watch online, bulletin, serve, stay in touch): confirm what it actually
-  does and where it goes, so it delivers what the visitor came for. Several may
-  be placeholders.
-- [ ] **Connect heading — reframe for newcomers.** Currently "For our church
-  family / Stay Connected," which can make a first-timer feel the section isn't
-  for them. Primary audience is NEW people — reword to welcome both, leaning new.
+- [x] **Connect — rebuilt newcomer-first (DONE 2026-06-10).** Heading → "Connect
+  With Us." Removed Give (turnoff for newcomers); replaced Weekly Bulletin with a
+  weekly-encouragement EMAIL sign-up; reframed Serve → "Find Your Place." Prayer
+  is now a low-friction inline **Netlify form** (was a mailto). Kept Watch (YouTube)
+  + Follow (Facebook). Section = prayer form → 3 cards → encouragement sign-up.
+  ⚠️ ADMIN TODO (in Netlify dashboard, not code): after deploy, Forms → add email
+  notifications for **prayer-request** and **weekly-encouragement** → route to
+  goodhopebap@outlook.com / Pastor Tim.
+- [ ] **Weekly encouragement — SENDING (later phase).** The form only *collects*
+  sign-ups right now. Actually sending a weekly email needs (a) someone to write
+  it and (b) a tool (MailerLite/Mailchimp/Brevo). Text/SMS deferred (cost +
+  opt-in compliance). Decide with leadership.
 - [ ] **Beliefs.** Content/clarity pass (also see doctrine review in Batch A).
 - [ ] **Ministries.** Keep, but tighten and clarify.
 - [ ] **Section order / flow.** Heritage/"our story" currently sits right after
@@ -210,6 +215,22 @@ is a single afternoon later.*
   ✓. FB + YouTube need a manual click to confirm. og-image.png is MISSING →
   blank social-share previews (logged, parked, needs headless render). Next:
   knock out 🤔 decisions, or start Batch A copy polish.
+- 2026-06-10 — CONNECT SECTION REBUILT (newcomer-first) + PUSHED. Heading →
+  "Connect With Us"; prayer is now an inline Netlify form (not a mailto); removed
+  Give; Bulletin → weekly-encouragement EMAIL sign-up (collection only); Serve →
+  "Find Your Place"; kept Watch (YouTube) + Follow (Facebook). Two new Netlify
+  forms: prayer-request, weekly-encouragement.
+  ▶▶ START HERE NEXT TIME:
+     1. ADMIN (you, in Netlify — not code): Dashboard → Forms → turn on email
+        notifications for "prayer-request" and "weekly-encouragement" so they
+        reach goodhopebap@outlook.com / Pastor Tim. Also do the same for
+        "plan-your-visit" if not already done.
+     2. SECTION REORDER (the deferred decision): recommended order is
+        Welcome → Beliefs → Connect → Visit → Pastor → Ministries → Our Story.
+        Confirm, then I move the sections. Low-risk, do this first next session.
+     3. Then remaining Batch F copy: Welcome (human voice), Beliefs, Ministries.
+     4. Parked still: real photos, og-image.png render, dead-CSS sweep, rebuild a
+        simple Sunday section (Worship 9:30, what Sunday looks like, kids 3–12).
 - 2026-06-10 — BATCH E DONE (strip 150th sitewide). Removed announcement bar,
   the home 150 section, the entire Services section, and the `/150/` page; fixed
   every link that pointed to it across home / Our Story / thanks (zero `/150/`
