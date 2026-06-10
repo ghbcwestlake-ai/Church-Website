@@ -139,32 +139,50 @@
     <section class="hero" id="hero">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
-        <img
-          src="Logos/GHPC_full_color_vertical_Gold_transparent.png"
-          alt="Good Hope Missionary Baptist Church"
-          class="hero-logo"
-        />
+        <div class="hero-logo-card">
+          <img
+            src="Logos/GHPC%20full%20color%20vertical.png"
+            alt="Good Hope Missionary Baptist Church"
+            class="hero-logo"
+          />
+        </div>
         <h1 class="visually-hidden">Good Hope Missionary Baptist Church</h1>
         <p class="hero-eyebrow">Westlake, Louisiana</p>
-
-        <div class="hero-anniv">
-          <p class="hero-anniv-label">Celebrating 150 Years</p>
-          <p class="hero-anniv-years">1876 &mdash; 2026</p>
-        </div>
-
-        <p class="hero-tagline">A Community of Faith Since 1876</p>
-        <p class="hero-times">Sundays at 9:30 AM &middot; Wednesdays at 5:30 PM</p>
+        <p class="hero-tagline">A church family where you&rsquo;re welcome just as you are.</p>
 
         <div class="hero-actions">
-          <a href="#plan-form" class="btn btn-primary btn-lg">Plan Your Visit</a>
-          <a href="/150/" class="btn btn-ghost btn-lg">Join Our 150th Celebration</a>
+          <a href="#visit" class="btn btn-primary btn-lg">Plan Your Visit</a>
         </div>
+
+        <nav class="hero-actions-secondary" aria-label="Quick links for visitors">
+          <a href="#welcome" class="hero-link">New Here?</a>
+          <a href="#connect" class="hero-link">Need Prayer?</a>
+          <a href="#plan-form" class="hero-link">Talk With Us</a>
+        </nav>
       </div>
 
       <a href="#welcome" class="hero-scroll" aria-label="Scroll down to explore">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </a>
     </section>
+
+    <!-- ============================================
+         SERVICE TIMES + ADDRESS STRIP
+         First-glance "when & where" — sits immediately under the hero so
+         it's seen without a meaningful scroll. Times are Sunday-only by design.
+         ============================================ -->
+    <aside class="info-strip" aria-label="Service times and location">
+      <div class="container info-strip-inner">
+        <p class="info-strip-item">
+          <span class="info-strip-label">Sundays</span>
+          Prayer 9:00 AM &middot; Worship 9:30 AM
+        </p>
+        <p class="info-strip-item">
+          <span class="info-strip-label">Find us</span>
+          821 Sampson St., Westlake, Louisiana 70669
+        </p>
+      </div>
+    </aside>
 
     <!-- ============================================
          2. WELCOME / ABOUT

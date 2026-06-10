@@ -17,15 +17,16 @@
 
 ## 🤔 DECISIONS NEEDED (do these first — they unblock everything)
 
-- [ ] **Confirmed service times.** The site currently says Sunday/Wednesday
-  times are "still being confirmed" and tells people to call. Lock the real
-  times so we can remove that disclaimer. → Sun: ____  Wed: ____
-- [ ] **Post-June hero plan.** What does the top of the page say after the 150th
-  celebration ends? (Options: rotate to an evergreen "Welcome / Plan a Visit"
-  hero, keep a smaller "we just celebrated 150 years" banner, etc.) Decide the
-  direction; we'll write it.
-- [ ] **Post-June 150 section.** Same question for the big "150 Years" section
-  and the `/150/` page — archive it? Turn it into a recap with photos? Decide.
+- [x] **Confirmed service times.** DECIDED 2026-06-10: Sundays only for launch —
+  **Prayer 9:00 AM, Worship 9:30 AM.** Wednesday is being removed for now and
+  rebuilt later. Now live in the hero info strip.
+- [x] **Post-June hero plan.** DECIDED 2026-06-10: hero is now evergreen — logo,
+  warm welcome line, one primary "Plan Your Visit" + three paths, and a service
+  times/address strip. No anniversary content in the hero.
+- [x] **Strip the 150 content NOW (don't wait for June 28).** DECIDED 2026-06-10:
+  the site won't be ready to launch before the celebration, so serving the 150th
+  is no longer this site's job. Tear it out — see **Batch E** below. ⚠️ Dorian to
+  give Pastor a heads-up, but the direction is set.
 - [ ] **Pastor bio accuracy.** Confirm every detail in Pastor Tim's bio is
   current and correct before we treat that section as locked.
 - [ ] **Ministry contacts.** Do any ministries (Youth, Music, Missions, etc.)
@@ -123,15 +124,41 @@
 - [ ] "Plan Your Visit" Q&A — does it answer the real first-timer fears? (Looks
   strong already; just confirm nothing's missing.)
 
-## BATCH E — Post-June content transition
-*Handle BEFORE the celebration ends so the site never reads stale.*
-*(Blocked on the post-June decisions above.)*
+## BATCH E — Strip the 150th content (ACTIVE — decided 2026-06-10)
+*The site won't launch before June 28, so the 150th is no longer its job. Tear
+it out cleanly now; a recap can be rebuilt later if church leadership wants one.*
 
-- [ ] Swap hero to evergreen version per decision.
-- [ ] Resolve the "150 Years" section per decision (archive / recap / shrink).
-- [ ] Remove or update the sticky June 28 announcement bar.
-- [ ] Update meta description / OG tags if they lean on the celebration.
-- [ ] Decide fate of the `/150/` page.
+- [x] Swap hero to evergreen version. — DONE 2026-06-10.
+- [ ] Remove the sticky 150th / June 28 announcement bar at the top of the page.
+- [ ] Remove the big "150 Years" section on the home page.
+- [ ] Retire the `/150/` page and its schedule; remove all nav/links pointing to it.
+- [ ] Simplify the Services section: remove Wednesday and the 150th anniversary
+  worship entry. Consider removing the Services section entirely for now and
+  rebuilding it cleanly later (service times already live in the hero strip).
+- [ ] Update meta description / OG tags that lean on "150 years / since 1876"
+  so the site doesn't read stale.
+- [ ] Sweep footer + any remaining "Celebrating 150 Years / 1876" copy.
+
+## BATCH F — Section-by-section content & flow (from 2026-06-10 walkthrough)
+*Captured during review. Content/copy/structure refinements — mostly need a
+human voice pass, not mechanical edits.*
+
+- [ ] **Welcome copy.** Rewrite so it reads like a real person wrote it, not
+  generic filler.
+- [ ] **Connect — define the destinations.** For each Connect action (give,
+  prayer, watch online, bulletin, serve, stay in touch): confirm what it actually
+  does and where it goes, so it delivers what the visitor came for. Several may
+  be placeholders.
+- [ ] **Connect heading — reframe for newcomers.** Currently "For our church
+  family / Stay Connected," which can make a first-timer feel the section isn't
+  for them. Primary audience is NEW people — reword to welcome both, leaning new.
+- [ ] **Beliefs.** Content/clarity pass (also see doctrine review in Batch A).
+- [ ] **Ministries.** Keep, but tighten and clarify.
+- [ ] **Section order / flow.** Heritage/"our story" currently sits right after
+  Welcome (hero → welcome → heritage → …). Evaluate moving visitor-facing
+  sections (Plan Your Visit, beliefs) ahead of heritage — history matters more to
+  members/shoppers than to a first-time stranger.
+  → Claude's rec: move heritage lower; lead with what a stranger needs first.
 
 ---
 
@@ -167,6 +194,13 @@ is a single afternoon later.*
   ✓. FB + YouTube need a manual click to confirm. og-image.png is MISSING →
   blank social-share previews (logged, parked, needs headless render). Next:
   knock out 🤔 decisions, or start Batch A copy polish.
+- 2026-06-10 — HERO REBUILT (cosmetics). Full-color logo in a refined cream card,
+  evergreen copy, one primary "Plan Your Visit" (→#visit) + three pill paths
+  (New Here?→#welcome, Need Prayer?→#connect, Talk With Us→#plan-form), and a new
+  Sunday-times + address info strip. Removed all 150/anniversary content from the
+  hero. Service times DECIDED (Sun: Prayer 9:00, Worship 9:30). Walkthrough
+  logged new Batch E (strip 150 sitewide) + Batch F (section content). Changes
+  UNCOMMITTED pending review/push. Next: push hero, then start Batch E teardown.
 - 2026-06-09 — Batch A mechanical pass (no judgment calls): fixed all straight
   apostrophes in visible copy → `&rsquo;` (13 edits, index.html); normalized the
   address to a single uniform string everywhere ("Westlake, Louisiana 70669");

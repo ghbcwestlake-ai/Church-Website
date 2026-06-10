@@ -460,29 +460,31 @@ p:last-child { margin-bottom: 0; }
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 760px;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Cream card so the full-color logo reads crisply against the navy hero */
+.hero-logo-card {
+  display: inline-block;
+  background: var(--cream);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+  margin: 0 0 var(--space-4);
 }
 
 .hero-logo {
   display: block;
   width: auto;
-  max-width: 240px;
-  max-height: 200px;
+  max-width: 170px;
+  max-height: 160px;
   height: auto;
-  margin: 0 0 var(--space-4);
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.25));
+  margin: 0;
 }
 @media (min-width: 768px) {
-  .hero-logo { max-width: 280px; max-height: 240px; }
-}
-/* Center the hero stack on phones; left-align on tablet+ so the desktop
-   composition keeps its weight on the left of the photo. */
-@media (max-width: 640px) {
-  .hero-content { text-align: center; }
-  .hero-logo { margin-left: auto; margin-right: auto; }
-  .hero-anniv { align-items: center; }
-  .hero-actions { justify-content: center; }
-  .hero-times { display: inline-block; }
+  .hero-logo { max-width: 195px; max-height: 180px; }
 }
 
 .hero-eyebrow {
@@ -499,26 +501,82 @@ p:last-child { margin-bottom: 0; }
   font-style: italic;
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   color: var(--cream);
-  margin: 0 0 var(--space-4);
+  margin: 0 auto var(--space-4);
+  max-width: 26ch;
   font-weight: 500;
-}
-
-.hero-times {
-  display: inline-block;
-  margin: 0 0 var(--space-4);
-  padding: 0.5rem 1rem;
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  color: var(--cream);
-  background: rgba(0, 0, 0, 0.18);
-  border-left: 3px solid var(--gold);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  justify-content: center;
+}
+
+/* Three equal-weight secondary paths under the primary CTA */
+.hero-actions-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Tappable pills — clearly clickable, but lighter than the solid primary so
+   the hierarchy stays obvious. Sized for thumbs (44px floor) on mobile. */
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.55rem 1.3rem;
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.hero-link:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+/* Service times + address strip — sits directly under the hero */
+.info-strip {
+  background: var(--navy-dark);
+  color: var(--cream);
+  border-top: 3px solid var(--gold);
+  padding: var(--space-3) 0;
+}
+.info-strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+  text-align: center;
+}
+.info-strip-item {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  color: var(--cream);
+}
+.info-strip-label {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  color: var(--gold);
 }
 
 
@@ -1330,14 +1388,8 @@ p:last-child { margin-bottom: 0; }
 
 
 /* --------------------------------------------------------------------------
-   19. HERO — scroll cue + "times tentative" tag
+   19. HERO — scroll cue
    -------------------------------------------------------------------------- */
-.hero-times-flag {
-  white-space: nowrap;
-  font-style: italic;
-  opacity: 0.85;
-}
-
 .hero-scroll {
   position: absolute;
   left: 50%;
@@ -1638,36 +1690,10 @@ p:last-child { margin-bottom: 0; }
        sub-page hero, /150 schedule, /our-story timeline. All additive.
    -------------------------------------------------------------------------- */
 
-/* ---- Hero anniversary typography (replaces the old .hero-badge pill) ----- */
-.hero-anniv {
-  margin: 0 0 var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-.hero-anniv-label {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin: 0;
-}
-.hero-anniv-years {
-  font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: 0.02em;
-  line-height: 1.05;
-  margin: 0;
-}
-
 /* ---- Buttons: extensions only ------------------------------------------- */
 .btn-lg {
-  padding: 1rem 1.9rem;
-  font-size: 1rem;
+  padding: 1.05rem 2.3rem;
+  font-size: 1.05rem;
   min-height: 48px;
 }
 .btn-outline-navy {
