@@ -15,3 +15,23 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# --------------------------------------------------------------------------
+# CHILDREN'S MINISTRY (/kids)
+#
+# Everything under /kids is behind a code. The gate is an edge function
+# because a check in the page would leave the lesson files, the art and the
+# photographs of children fetchable by direct URL. See
+# netlify/edge-functions/kids-auth.js, which also lists the two environment
+# variables it needs. The public church site above is untouched by any of it.
+# --------------------------------------------------------------------------
+
+[[edge_functions]]
+  path = "/kids/*"
+  function = "kids-auth"
+
+[[headers]]
+  for = "/kids/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"

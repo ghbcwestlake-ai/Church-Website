@@ -1,0 +1,294 @@
+/* ==========================================================================
+   GOOD HOPE KIDS — STYLES
+
+   Phone first: a teacher holds this in one hand on a Sunday morning and a
+   parent opens it for twenty seconds during the week. Everything is reachable
+   with a thumb, nothing sits outside its card, and the whole thing works at
+   390px wide.
+
+   The palette is the CHILDREN'S MINISTRY palette (see the Atlas repo,
+   childrens-ministry/style/brand.md), not the church site's. That is on
+   purpose: this has to match the decks on the TV and the Faith Builders slips
+   in the children's hands, which is what a parent sees it next to.
+   ========================================================================== */
+
+:root {
+  --navy:       #174276;
+  --navy-deep:  #0E2D52;
+  --navy-dim:   #16395C;
+  --gold:       #C7962F;
+  --paper:      #F7F1E4;
+  --tint:       #DCE4EE;
+  --ink:        #2E3A4A;
+  --muted:      #5A6472;
+  --faint:      #7A8492;
+  --line:       #EDE6D6;
+  --white:      #FFFFFF;
+  --green:      #7FA05B;
+  --green-ink:  #5C7A44;
+  --stage-dark: #0F2A47;
+
+  --radius:     18px;
+  --radius-sm:  15px;
+
+  --tabs-height: 66px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+a { color: var(--navy); text-decoration: none; }
+button { font: inherit; }
+
+h1, h2, h3 { font-family: "Fredoka", sans-serif; font-weight: 600; color: var(--navy); margin: 0; }
+
+/* --------------------------------------------------------------- layout -- */
+
+#topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--navy);
+  padding: calc(14px + env(safe-area-inset-top, 0px)) 18px 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+#topbar .crest { width: 30px; height: 30px; object-fit: contain; flex: none; }
+#topbar .title {
+  flex: 1 1 auto; min-width: 0;
+  font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 19px; color: var(--white);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#topbar .who { font-size: 12px; font-weight: 700; letter-spacing: 0.7px; color: var(--gold); flex: none; }
+#topbar .iconbtn {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: 0; border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12); cursor: pointer; flex: none;
+}
+
+#view {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 20px 20px calc(var(--tabs-height) + var(--safe-bottom) + 24px);
+  outline: none;
+}
+#view.bare { max-width: none; padding: 0; }
+
+#tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  display: flex;
+  background: var(--white);
+  border-top: 2px solid var(--tint);
+  padding-bottom: var(--safe-bottom);
+}
+#tabs:empty { display: none; }
+#tabs a {
+  flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  padding: 11px 4px 13px;
+  font-size: 11.5px; font-weight: 600; color: #8C97A5;
+  -webkit-tap-highlight-color: transparent;
+}
+#tabs a.on { font-weight: 700; color: var(--navy); }
+
+/* ---------------------------------------------------------------- bits -- */
+
+.stack { display: flex; flex-direction: column; gap: 16px; }
+
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--gold); }
+.eyebrow--navy { color: var(--navy); }
+.sub { font-size: 14px; color: var(--muted); margin: 2px 0 0; }
+
+.card {
+  background: var(--white);
+  border: 2px solid var(--tint);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card__pad { padding: 20px; }
+.card--tint { background: var(--tint); border-color: var(--tint); }
+.card--gold { border-color: var(--gold); }
+.card--navy { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.card--navy h2, .card--navy h3 { color: var(--white); }
+
+.cover { display: block; width: 100%; height: 160px; object-fit: cover; }
+.cover--short { height: 118px; }
+
+.lede { margin: 10px 0 0; font-size: 15px; line-height: 1.5; }
+.body { margin: 11px 0 0; font-size: 16px; line-height: 1.55; }
+.note { margin: 11px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+
+.verse { font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: var(--navy); margin: 10px 0 0; }
+.verse__ref { margin: 8px 0 0; font-size: 14px; font-weight: 600; color: #4A6488; }
+
+.rowlink { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 15px; font-weight: 700; color: var(--navy); }
+
+/* Buttons. Big enough for a thumb, and never narrower than the text in them. */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 18px;
+  border: 2px solid var(--tint); border-radius: var(--radius-sm);
+  background: var(--paper); color: var(--navy);
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn--primary { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.btn--big { padding: 20px; font-size: 18px; }
+.btn--row { width: auto; flex: 1 1 0; padding: 15px 10px; font-size: 14.5px; }
+.btnrow { display: flex; gap: 12px; }
+
+.pill {
+  display: inline-block; padding: 5px 12px; border-radius: 999px;
+  background: var(--tint); font-size: 12px; font-weight: 700; color: var(--navy);
+}
+.pill--gold { background: var(--gold); color: #3A2B07; letter-spacing: 0.7px; font-size: 11.5px; }
+
+/* Readiness rows on the teacher's Sunday screen. */
+.rows { padding: 8px 18px; }
+.row { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row__name { flex: 1 1 auto; font-size: 15.5px; font-weight: 700; }
+.row__state { font-size: 13.5px; font-weight: 700; flex: none; }
+.row--off .row__name { font-weight: 600; color: #8C97A5; }
+.row--off .row__state { font-weight: 400; color: #8C97A5; }
+.tick {
+  display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%; background: var(--green); flex: none;
+}
+.tick--empty { background: none; border: 2px dashed #C3CCD8; }
+
+.checks { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.check { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.45; }
+.check__box { width: 16px; height: 16px; border-radius: 4px; border: 2px solid #7A93B0; flex: none; margin-top: 3px; }
+
+.promises { display: flex; flex-direction: column; gap: 11px; margin-top: 14px; }
+.promise { display: flex; align-items: flex-start; gap: 12px; }
+.promise__dot { width: 14px; height: 14px; border-radius: 50%; flex: none; margin-top: 3px; }
+.promise__text { display: block; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.promise__ref { display: block; font-size: 13px; color: var(--faint); margin-top: 1px; }
+
+.filerow { display: flex; align-items: center; gap: 14px; padding: 16px 18px; }
+.filerow__icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: 12px; background: var(--tint); flex: none;
+}
+.filerow__name { display: block; font-size: 15.5px; font-weight: 700; line-height: 1.35; }
+.filerow__detail { display: block; font-size: 13px; color: var(--faint); margin-top: 2px; }
+
+/* ---------------------------------------------------------------- feed -- */
+
+.post__head { display: flex; align-items: center; gap: 10px; padding: 15px 18px 12px; }
+.post__avatar {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%; background: var(--navy); flex: none;
+  font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 15px; color: var(--white);
+}
+.post__by { display: block; font-size: 15px; font-weight: 700; color: var(--navy); }
+.post__when { display: block; font-size: 12.5px; color: var(--faint); }
+.post__photos { display: grid; gap: 2px; background: var(--tint); }
+.post__photos--2 { grid-template-columns: 1fr 1fr; }
+.post__photos img { display: block; width: 100%; height: 100%; max-height: 320px; object-fit: cover; }
+.post__body { padding: 16px 18px 18px; }
+.post__text { margin: 0; font-size: 15.5px; line-height: 1.55; }
+
+/* --------------------------------------------------------------- empty -- */
+
+.empty { text-align: center; padding: 46px 24px; }
+.empty h2 { font-size: 20px; }
+.empty p { margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+/* ----------------------------------------------------------- presenting -- */
+
+/* The stage is always 1440x810 and gets scaled to fit. Never reflowed: the
+   room must see the same layout the deck would have shown. */
+.present {
+  position: fixed; inset: 0; z-index: 50;
+  background: var(--stage-dark);
+  display: flex; flex-direction: column;
+}
+.present__screen {
+  flex: 1 1 auto; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.stage-wrap { position: relative; }
+.stage {
+  position: relative;
+  width: 1440px; height: 810px;
+  background: var(--paper);
+  transform-origin: top left;
+  overflow: hidden;
+}
+.stage p { margin: 0; }
+
+.present__bar {
+  flex: none;
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px calc(12px + var(--safe-bottom));
+  background: var(--stage-dark);
+  border-top: 1px solid #23486E;
+}
+.present__count { font-size: 13.5px; font-weight: 700; color: #9FB6CE; flex: none; }
+.present__say {
+  flex: 1 1 auto; min-width: 0;
+  font-size: 15px; line-height: 1.4; color: #C6D4E6;
+  max-height: 44px; overflow: hidden;
+}
+.present__btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 60px; height: 56px; border-radius: 14px;
+  border: 2px solid #3A5B7E; background: transparent; cursor: pointer; flex: none;
+}
+.present__btn--go { background: var(--gold); border-color: var(--gold); }
+.present__btn[disabled] { opacity: 0.35; }
+.present.is-black .present__screen { visibility: hidden; }
+
+/* The phone half: teacher lines big, controls under the thumb. */
+.cue {
+  position: fixed; inset: 0; z-index: 50; overflow-y: auto;
+  background: var(--stage-dark); color: var(--white);
+  display: flex; flex-direction: column;
+}
+.cue__spacer { flex: 1 1 auto; min-height: 12px; }
+.cue__head { display: flex; align-items: center; gap: 10px; padding: 16px 20px 0; }
+.cue__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); flex: none; }
+.cue__where { flex: 1 1 auto; font-size: 13.5px; font-weight: 700; color: #9FB6CE; }
+.cue__exit {
+  padding: 9px 15px; border: 1.5px solid #3A5B7E; border-radius: 999px;
+  background: none; font-size: 13.5px; font-weight: 700; color: #C6D4E6; cursor: pointer;
+}
+.cue__peek { display: flex; align-items: center; gap: 14px; margin: 20px 20px 0; padding: 12px; background: var(--navy-dim); border-radius: 16px; }
+.cue__thumb { width: 118px; height: 66px; border-radius: 9px; overflow: hidden; flex: none; background: var(--paper); position: relative; }
+.cue__thumb .stage { transform-origin: top left; }
+.cue__label { font-size: 12px; font-weight: 700; letter-spacing: 0.8px; color: var(--gold); }
+.cue__title { margin-top: 4px; font-size: 14.5px; font-weight: 700; line-height: 1.35; }
+.cue__say { margin: 22px 20px 0; }
+.cue__say .eyebrow { color: #7E9AB8; }
+.cue__say p { margin: 14px 0 0; font-size: 27px; font-weight: 700; line-height: 1.38; }
+.cue__next { margin: 18px 20px 0; padding: 16px 18px; background: var(--navy-dim); border-radius: 16px; }
+.cue__next .eyebrow { color: #7E9AB8; }
+.cue__next p { margin: 8px 0 0; font-size: 15.5px; line-height: 1.45; color: #C6D4E6; }
+.cue__pad { display: flex; gap: 12px; margin: 18px 20px calc(20px + var(--safe-bottom)); }
+.cue__pad .present__btn { height: 78px; border-radius: 18px; }
+.cue__pad .present__btn--go { flex: 1 1 auto; width: auto; gap: 10px; font-size: 19px; font-weight: 700; color: #2E2205; }
+
+/* --------------------------------------------------------------- misc -- */
+
+.spin { padding: 60px 0; text-align: center; color: var(--muted); font-size: 15px; }
+
+@media (min-width: 720px) {
+  #view { padding-bottom: 40px; }
+  #tabs { position: sticky; }
+}
+
+@media print {
+  #topbar, #tabs { display: none; }
+}
