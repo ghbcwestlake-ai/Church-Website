@@ -16,7 +16,7 @@
      shell are cache-first, because they are big and they do not change.
    ========================================================================== */
 
-var VERSION = "kids-v1";
+var VERSION = "kids-v2";
 var SHELL = [
   "/kids/",
   "/kids/index.html",
@@ -66,6 +66,24 @@ self.addEventListener("fetch", function (event) {
   if (!cacheable(request)) return;
 
   var url = new URL(request.url);
+
+  /* Loading a PAGE always asks the network first, even though the shell is
+     cached. The gate lives at the same URLs as the app: if a signed-out
+     browser were handed the cached shell, the app would start, get a 401 for
+     who-am-I, reload, and be handed the cached shell again — forever. Falling
+     back to the cache keeps the app working on a dead wifi. */
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request).then(function (response) { return save(request, response); })
+        .catch(function () {
+          return caches.match(request).then(function (hit) {
+            return hit || caches.match("/kids/index.html");
+          });
+        })
+    );
+    return;
+  }
+
   var isData = url.pathname.indexOf("/kids/data/") === 0;
 
   if (isData) {

@@ -140,9 +140,14 @@
           icon(ICONS.back, { color: "#FFFFFF", size: 20, weight: 2.5 }) + '</a>'
       : "";
 
+    // Sign out is always reachable. Two people share an iPad in that room and
+    // a parent who taps Teachers by mistake must be able to get back out
+    // without being told a URL.
     topbar.innerHTML = left +
       '<span class="title">' + esc(o.title || "Good Hope Kids") + '</span>' +
-      (o.who ? '<span class="who">' + esc(o.who) + '</span>' : "");
+      (o.who ? '<span class="who">' + esc(o.who) + '</span>' : "") +
+      '<button class="iconbtn" type="button" data-act="signout" aria-label="Sign out">' +
+        icon(ICONS.out, { color: "#C6D4E6", size: 19 }) + '</button>';
 
     drawTabs(o.tab);
   }
@@ -661,9 +666,19 @@
     if (data) drawPresent(data, state.present.n);
   });
 
+  /* Clear the offline cache on the way out. Without it, this device keeps a
+     copy of every lesson and photograph it has opened, and the next person to
+     hold the iPad is a different person. */
   function signOut() {
+    var done = function () { window.location.href = "/kids/"; };
     fetch("/kids/__signout", { method: "POST", credentials: "same-origin" })
-      .then(function () { window.location.href = "/kids/"; });
+      .then(function () {
+        if (!window.caches) return null;
+        return caches.keys().then(function (names) {
+          return Promise.all(names.map(function (name) { return caches.delete(name); }));
+        });
+      })
+      .then(done, done);
   }
 
   /* --------------------------------------------------------------- data -- */
