@@ -122,6 +122,22 @@ The gate is an edge function, so plain `python -m http.server` will serve the
 app but `/kids/__me` will 404 and the app will not start. Either run
 `netlify dev` from the repo root, or stub that one endpoint.
 
+## Deploys
+
+Auto-publishing is **on**: a push to `main` builds and goes live on its own.
+
+It was switched off between June and September 2026 to save build minutes on
+the free plan. It did not save any — the site has no build command, so Netlify
+only uploads the files and the build-minute meter reads zero. Stopping
+auto-publish also never stopped the builds; it only stopped them going live, so
+every push in that window built anyway and then sat there. If builds ever do
+need stopping, the switch is "Stop builds" under Build & deploy, which is a
+different thing.
+
+The one meter this site can actually move is **edge function invocations** —
+the gate runs on every request under `/kids`, and the free plan includes a
+million a month. Worth a look once families are really using it.
+
 ## Classes
 
 Only **ages 4 to 8** runs today. Nursery and preteen appear on the teacher's
